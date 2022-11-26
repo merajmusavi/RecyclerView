@@ -9,6 +9,38 @@
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/re"
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
+       android:layout_height="match_parent"
+       tools:layout_editor_absoluteX="-39dp"
+       tools:layout_editor_absoluteY="0dp">
+
    </androidx.recyclerview.widget.RecyclerView>
+
+   <EditText
+       android:id="@+id/ctc_f_name"
+       android:layout_width="wrap_content"
+       android:layout_height="0dp"
+       android:layout_marginStart="12dp"
+       android:layout_marginBottom="12dp"
+       android:background="@drawable/shape_et"
+       android:elevation="4dp"
+       android:ems="10"
+       android:hint="@string/ctc_f_n"
+       android:inputType="textPersonName"
+       android:padding="8dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toStartOf="@+id/iv_add_ctc"
+       app:layout_constraintHorizontal_bias="0.44"
+       app:layout_constraintStart_toStartOf="parent" />
+
+   <ImageView
+       android:id="@+id/iv_add_ctc"
+       android:layout_width="50dp"
+       android:layout_height="50dp"
+       android:layout_marginEnd="12dp"
+       android:layout_marginBottom="12dp"
+       android:background="@drawable/shape_accent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:srcCompat="@drawable/ic_add_24dp_foreground" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
