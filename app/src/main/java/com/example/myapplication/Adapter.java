@@ -13,7 +13,10 @@ import java.util.ArrayList;
 
 public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private ArrayList<String> contacts = new ArrayList<>();
-    public Adapter(){
+    private ItemListener itemListener;
+
+    public Adapter(ItemListener itemListener){
+        this.itemListener = itemListener;
         contacts.add("Ruthann Trustrie");
         contacts.add("Peadar Dawtrey");
         contacts.add("Felipe Bradtke");
@@ -38,6 +41,10 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void addContact(String name){
         contacts.add(0,name);
         notifyItemInserted(0);
+    }
+    public void update(String fullname,int position){
+        contacts.set(position,fullname);
+        notifyItemChanged(position);
     }
     @NonNull
     @Override
@@ -72,10 +79,21 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),Fname.getText(),Toast.LENGTH_SHORT).show();
+                 itemListener.OnItemClicked(Fname.getText().toString(),getAdapterPosition());
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    contacts.remove(getAdapterPosition());
+                    notifyItemRemoved(getAdapterPosition());
+                    return false;
                 }
             });
         }
 
+    }
+    public interface ItemListener{
+        public void OnItemClicked(String fullname,int position);
     }
 }
